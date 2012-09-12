@@ -31,6 +31,7 @@ html_content = """
                         }
                         else{
                             str += "immediate! Woot!"
+                        }
                         result.innerHTML += str;
                     }
                     if(!gotJS && window.testing123){
