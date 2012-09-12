@@ -17,6 +17,7 @@ html_content = """
             var counter = 0;
             var gotCSS = false;
             var gotJS = false;
+            var str;
             setInterval(function(){
                 counter++;
                 if(counter < 12){
@@ -24,16 +25,25 @@ html_content = """
                     if(!gotCSS && getComputedStyle(result)["color"] != "rgb(0, 0, 0)"){
                         console.log("Got CSS parsed at " + counter + " seconds");
                         gotCSS = true;
+                        str = "CSS parsing was ";
                         if(counter > 2){
-                            result.innerHTML += "CSS parsing was delayed";
+                            str += "delayed :(";
                         }
+                        else{
+                            str += "immediate! Woot!"
+                        result.innerHTML += str;
                     }
                     if(!gotJS && window.testing123){
+                        str = "<br/>JS parsing was ";
                         console.log("Got JS parsed at " + counter + " seconds");
                         gotJS = true;
                         if(counter > 6){
-                            result.innerHTML += "<br>JS parsing was delayed";
+                            str += "delayed :`(";
                         }
+                        else{
+                            str += "immediate! woot!!!"
+                        }
+                        result.innerHTML += str;
                     }
                 }
             }, 1000);
